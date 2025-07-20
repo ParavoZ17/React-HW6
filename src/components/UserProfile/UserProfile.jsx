@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import style from './UserProfile.module.css'
 
 function UserProfile() {
   const [user, setUser] = useState(null);
@@ -27,15 +28,15 @@ function UserProfile() {
 
   
   return (
-    <div>
-        <img src={user.picture.large} alt="User" />
+    <div className={style.container} style={{backgroundColor: user.gender === "male"? "teal":"bisque", color: user.gender === "male"? "yellow":"blue"}}>
+        <img src={user.picture.large} alt="User" className={style.img}/>
       <h2>
         {user.name.first} {user.name.last}
       </h2>
       
       <p>Email: {user.email}</p>
       <p>Cell: {user.phone}</p>
-      <button onClick={fetchUser}>Load new User</button>
+      <button onClick={fetchUser} className={style.load}>Load new User</button>
     </div>
   );
 }
